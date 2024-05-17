@@ -16,8 +16,8 @@ def get_utc_now():
     return datetime.utcnow()
 
 def create_and_get_assignment_for_test(state):
-    from core.models.assignments import Assignment, AssignmentStateEnum
-    # Create a new assignment
+    from core.models.assignments import Assignment
+
     assignment = Assignment()
     assignment.student_id = 1
     assignment.teacher_id = 1
