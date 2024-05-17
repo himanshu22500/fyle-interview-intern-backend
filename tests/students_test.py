@@ -1,3 +1,7 @@
+from core.libs.helpers import create_and_get_assignment_for_test
+from core.models.assignments import AssignmentStateEnum
+
+
 def test_get_assignments_student_1(client, h_student_1):
     response = client.get(
         '/student/assignments',
@@ -62,7 +66,7 @@ def test_submit_assignment_student_1(client, h_student_1):
         '/student/assignments/submit',
         headers=h_student_1,
         json={
-            'id': 2,
+            'id': create_and_get_assignment_for_test(state=AssignmentStateEnum.DRAFT),
             'teacher_id': 2
         })
 
@@ -79,7 +83,7 @@ def test_assignment_resubmit_error(client, h_student_1):
         '/student/assignments/submit',
         headers=h_student_1,
         json={
-            'id': 2,
+            'id': create_and_get_assignment_for_test(state=AssignmentStateEnum.SUBMITTED),
             'teacher_id': 2
         })
     error_response = response.json

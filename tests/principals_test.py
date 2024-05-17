@@ -1,3 +1,4 @@
+from core.libs.helpers import create_and_get_assignment_for_test
 from core.models.assignments import AssignmentStateEnum, GradeEnum
 
 
@@ -21,7 +22,7 @@ def test_grade_assignment_draft_assignment(client, h_principal):
     response = client.post(
         '/principal/assignments/grade',
         json={
-            'id': 5,
+            'id': create_and_get_assignment_for_test(state=AssignmentStateEnum.DRAFT),
             'grade': GradeEnum.A.value
         },
         headers=h_principal
