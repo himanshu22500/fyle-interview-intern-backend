@@ -56,3 +56,11 @@ pytest -vvv -s tests/
 # pytest --cov
 # open htmlcov/index.html
 ```
+
+### Run server with docker
+
+```commandline
+docker build -t fyle .
+
+docker run -p 7755:7755 -it fyle
+```
